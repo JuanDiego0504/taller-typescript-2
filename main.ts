@@ -10,7 +10,7 @@ if (seriesTbody) {
     console.error("No se encontró el elemento tbody con id 'seriesTbody'");
 }
 
-// Función que renderiza la lista de series en la tabla
+
 function renderSeriesInTable(series: Serie[]): void {
     series.forEach((serie) => {
         let trElement = document.createElement("tr");

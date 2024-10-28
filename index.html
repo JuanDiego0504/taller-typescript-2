@@ -6,92 +6,185 @@
     <title>TV Series</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
     <style>
-       
         .series-number {
             text-align: left;
             font-weight: bold;
         }
-        
         .average-text {
             font-weight: bold;
             text-align: left;
             padding-top: 10px;
             font-size: 1rem;
         }
+     
+        .table-custom th, .table-custom td {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .table-custom tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .table-custom thead th {
+            font-weight: bold;
+        }
+        .table-custom tbody a {
+            color: #007bff; 
+            text-decoration: none;
+        }
+        .table-custom tbody a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-   
+
     <div class="bg-info text-white p-3">
         <h3 class="d-flex align-items-center">
-            <img src="https://via.placeholder.com/30" alt="Logo" class="mr-2"> <!-- Usa una imagen como logo -->
+            <img src="https://via.placeholder.com/30" alt="Logo" class="mr-2">
             TV Series
         </h3>
     </div>
 
-   
+  
     <div class="container mt-3">
-        <table class="table table-striped table-bordered">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Channel</th>
-                    <th scope="col">Seasons</th>
-                </tr>
-            </thead>
-            <tbody id="seriesTbody">
-                <tr>
-                    <td class="series-number">1</td>
-                    <td><a href="https://www.amc.com/shows/breaking-bad" target="_blank">Breaking Bad</a></td>
-                    <td>AMC</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td class="series-number">2</td>
-                    <td><a href="https://www.netflix.com/co/title/70242311" target="_blank">Orange Is the New Black</a></td>
-                    <td>Netflix</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td class="series-number">3</td>
-                    <td><a href="https://www.hbo.com/game-of-thrones" target="_blank">Game of Thrones</a></td>
-                    <td>HBO</td>
-                    <td>7</td>
-                </tr>
-                <tr>
-                    <td class="series-number">4</td>
-                    <td><a href="https://www.cbs.com/shows/big_bang_theory/about/" target="_blank">The Big Bang Theory</a></td>
-                    <td>CBS</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td class="series-number">5</td>
-                    <td><a href="https://www.bbc.co.uk/programmes/b018ttws" target="_blank">Sherlock</a></td>
-                    <td>BBC</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td class="series-number">6</td>
-                    <td><a href="https://www.bbc.co.uk/programmes/p065smy4" target="_blank">A Very English Scandal</a></td>
-                    <td>BBC</td>
-                    <td>2</td>
-                </tr>
-            </tbody>
-        </table>
-        <div id="averageSeasons" class="average-text">Seasons average: 6</div>
+        <div class="row">
+          
+            <div class="col-md-8">
+                <table class="table table-custom">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Channel</th>
+                            <th scope="col">Seasons</th>
+                        </tr>
+                    </thead>
+                    <tbody id="seriesTbody">
+                        <tr onclick="showDetails(0)">
+                            <td class="series-number">1</td>
+                            <td><a href="javascript:void(0);">Breaking Bad</a></td>
+                            <td>AMC</td>
+                            <td>5</td>
+                        </tr>
+                        <tr onclick="showDetails(1)">
+                            <td class="series-number">2</td>
+                            <td><a href="javascript:void(0);">Orange Is the New Black</a></td>
+                            <td>Netflix</td>
+                            <td>6</td>
+                        </tr>
+                        <tr onclick="showDetails(2)">
+                            <td class="series-number">3</td>
+                            <td><a href="javascript:void(0);">Game of Thrones</a></td>
+                            <td>HBO</td>
+                            <td>7</td>
+                        </tr>
+                        <tr onclick="showDetails(3)">
+                            <td class="series-number">4</td>
+                            <td><a href="javascript:void(0);">The Big Bang Theory</a></td>
+                            <td>CBS</td>
+                            <td>12</td>
+                        </tr>
+                        <tr onclick="showDetails(4)">
+                            <td class="series-number">5</td>
+                            <td><a href="javascript:void(0);">Sherlock</a></td>
+                            <td>BBC</td>
+                            <td>4</td>
+                        </tr>
+                        <tr onclick="showDetails(5)">
+                            <td class="series-number">6</td>
+                            <td><a href="javascript:void(0);">A Very English Scandal</a></td>
+                            <td>BBC</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="averageSeasons" class="average-text">Seasons average: 6</div>
+            </div>
+
+          
+            <div class="col-md-4">
+                <div id="seriesDetail" class="card" style="display: none;">
+                    <img id="seriesImage" class="card-img-top" src="" alt="Series Image">
+                    <div class="card-body">
+                        <h5 id="seriesTitle" class="card-title"></h5>
+                        <p id="seriesDescription" class="card-text"></p>
+                        <a id="seriesLink" href="#" target="_blank" class="card-link" style="color: #007bff;">https://www.series.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-   
     <script>
-       
-        const seasons = [5, 6, 7, 12, 4, 2];
+        const seriesData = [
+            {
+                id: 1,
+                name: "Breaking Bad",
+                channel: "AMC",
+                seasons: 5,
+                description: "Set and filmed in Albuquerque, New Mexico, the series tells the story of Walter White, a struggling and depressed high school chemistry teacher who is diagnosed with lung cancer.",
+                link: "https://www.amc.com/shows/breaking-bad",
+                image: "https://i.postimg.cc/cLSNqTHs/Breaking-Bad.jpg"
+            },
+            {
+                id: 2,
+                name: "Orange Is the New Black",
+                channel: "Netflix",
+                seasons: 6,
+                description: "The series begins revolving around Piper Chapman, a woman in her thirties living in New York City who is sentenced to 15 months in Litchfield Penitentiary.",
+                link: "https://www.netflix.com/co/title/70242311",
+                image: "https://i.postimg.cc/pd0NFHBT/Orange-Isthe-New-Black.jpg"
+            },
+            {
+                id: 3,
+                name: "Game of Thrones",
+                channel: "HBO",
+                seasons: 7,
+                description: "American fantasy drama",
+                link: "https://www.hbo.com/game-of-thrones",
+                image: "https://i.postimg.cc/pdVbrTz4/Gameof-Thrones.jpg"
+            },
+            {
+                id: 4,
+                name: "The Big Bang Theory",
+                channel: "CBS",
+                seasons: 12,
+                description: "Leonard and Sheldon are brilliant physicists—geniuses in the laboratory but socially challenged everywhere else.",
+                link: "https://www.cbs.com/shows/big_bang_theory/about/",
+                image: "https://i.postimg.cc/zB3swcdk/The-Big-Bang-Theory.jpg"
+            },
+            {
+                id: 5,
+                name: "Sherlock",
+                channel: "BBC",
+                seasons: 4,
+                description: "Sherlock depicts consulting detective Sherlock Holmes solving various mysteries in modern-day London.",
+                link: "https://www.bbc.co.uk/programmes/b018ttws",
+                image: "https://i.postimg.cc/wjQY9JyD/Sherlock.jpg"
+            },
+            {
+                id: 6,
+                name: "A Very English Scandal",
+                channel: "BBC",
+                seasons: 2,
+                description: "A Very English Scandal is a fact-based three-part British television comedy-drama miniseries.",
+                link: "https://www.bbc.co.uk/programmes/p065smy4",
+                image: "https://i.postimg.cc/BQDGwRJY/AVery-English-Scandal.jpg"
+            }
+        ];
 
-        
-        const average = seasons.reduce((sum, season) => sum + season, 0) / seasons.length;
-
-       
-        document.getElementById("averageSeasons").innerText = `Seasons average: ${average.toFixed(1)}`;
+        function showDetails(index) {
+            const series = seriesData[index];
+            document.getElementById("seriesTitle").innerText = series.name;
+            document.getElementById("seriesDescription").innerText = series.description;
+            document.getElementById("seriesImage").src = series.image;
+            document.getElementById("seriesImage").alt = series.name;
+            document.getElementById("seriesLink").href = series.link;
+            document.getElementById("seriesLink").innerText = series.link;
+            document.getElementById("seriesDetail").style.display = "block";
+        }
     </script>
 </body>
 </html>

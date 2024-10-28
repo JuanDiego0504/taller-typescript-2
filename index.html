@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Series</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+    <style>
+       
+        .series-number {
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .average-text {
+            font-weight: bold;
+            text-align: left;
+            padding-top: 10px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="bg-info text-white p-3">
+        <h3 class="d-flex align-items-center">
+            <img src="https://via.placeholder.com/30" alt="Logo" class="mr-2"> <!-- Usa una imagen como logo -->
+            TV Series
+        </h3>
+    </div>
+
+   
+    <div class="container mt-3">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Channel</th>
+                    <th scope="col">Seasons</th>
+                </tr>
+            </thead>
+            <tbody id="seriesTbody">
+                <tr>
+                    <td class="series-number">1</td>
+                    <td><a href="https://www.amc.com/shows/breaking-bad" target="_blank">Breaking Bad</a></td>
+                    <td>AMC</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td class="series-number">2</td>
+                    <td><a href="https://www.netflix.com/co/title/70242311" target="_blank">Orange Is the New Black</a></td>
+                    <td>Netflix</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td class="series-number">3</td>
+                    <td><a href="https://www.hbo.com/game-of-thrones" target="_blank">Game of Thrones</a></td>
+                    <td>HBO</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td class="series-number">4</td>
+                    <td><a href="https://www.cbs.com/shows/big_bang_theory/about/" target="_blank">The Big Bang Theory</a></td>
+                    <td>CBS</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td class="series-number">5</td>
+                    <td><a href="https://www.bbc.co.uk/programmes/b018ttws" target="_blank">Sherlock</a></td>
+                    <td>BBC</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td class="series-number">6</td>
+                    <td><a href="https://www.bbc.co.uk/programmes/p065smy4" target="_blank">A Very English Scandal</a></td>
+                    <td>BBC</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="averageSeasons" class="average-text">Seasons average: 6</div>
+    </div>
+
+   
+    <script>
+       
+        const seasons = [5, 6, 7, 12, 4, 2];
+
+        
+        const average = seasons.reduce((sum, season) => sum + season, 0) / seasons.length;
+
+       
+        document.getElementById("averageSeasons").innerText = `Seasons average: ${average.toFixed(1)}`;
+    </script>
+</body>
+</html>
